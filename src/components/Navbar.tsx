@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const navItems = [
     { id: 1, text: 'Create Account', url: '/create_account' },
-    { id: 2, text: token?'Dashboard':'Login', url: token? '/internet-bankinga': '/login' },
+    { id: 2, text: token?'Dashboard':'Login', url: token? '/internet-banking': '/login' },
     { id: 3, text: 'About', url: '/about' },
     { id: 4, text: 'Contact', url: '/contact' },
   ];
