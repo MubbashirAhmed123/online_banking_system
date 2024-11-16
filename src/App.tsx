@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import ChangePin from './pages/ChangePin';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import { url } from './baseUrl';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,7 +30,7 @@ const App = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:5000/auth", {
+                const response = await fetch(`${url}/auth`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,

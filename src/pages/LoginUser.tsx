@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { LoginFormData } from '../types/userType';
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { url } from "../baseUrl";
 
 interface LoginUserProps {
   setIsAuthenticated: (authenticated: boolean) => void;
@@ -18,7 +19,7 @@ const LoginUser: React.FC<LoginUserProps> = ({ setIsAuthenticated }) => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-        const response = await fetch('http://localhost:5000/api/user/userLogin', {
+        const response = await fetch(`${url}/api/user/userLogin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

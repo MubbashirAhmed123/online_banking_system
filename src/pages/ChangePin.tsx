@@ -3,6 +3,7 @@ import { AiFillBackward } from 'react-icons/ai';
 import { FaSpinner } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { url } from '../baseUrl';
 
 
 
@@ -32,7 +33,7 @@ const ChangePin: React.FC = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/user/changePin', {
+      const res = await fetch(`${url}/api/user/changePin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

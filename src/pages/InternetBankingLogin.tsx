@@ -3,6 +3,7 @@ import { ActivateInternetBanking } from '../types/userType';
 import { toast } from "react-toastify";
 import { AiFillBackward } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { url } from "../baseUrl";
 
 const InternetBankingLogin = () => {
   const {
@@ -16,7 +17,7 @@ const InternetBankingLogin = () => {
 
   const onSubmit = async (data: ActivateInternetBanking) => {
     try {
-      const response = await fetch('http://localhost:5000/api/user/internetBanking', {
+      const response = await fetch(`${url}/api/user/internetBanking`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

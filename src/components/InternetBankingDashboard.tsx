@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SideBar from './SideBar';
 import UserInfo from './UserInfo';
 import { UserDetailType } from '../types/userType';
+import { url } from '../baseUrl';
 
 
 function InternetBankingDashboard() {
@@ -9,7 +10,7 @@ function InternetBankingDashboard() {
 
   const getUserDetails=async()=>{
     const token=localStorage.getItem('token')
-    const res=await fetch('http://localhost:5000/api/user',{
+    const res=await fetch(`${url}/api/user`,{
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,

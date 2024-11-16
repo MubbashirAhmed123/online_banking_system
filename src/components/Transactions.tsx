@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillBackward } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { url } from '../baseUrl';
 
 interface Credit {
   amount: number;
@@ -28,7 +29,7 @@ const Transactions: React.FC = () => {
   const getTransactions = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5000/api/user/transactions', {
+      const res = await fetch(`${url}/api/user/transactions`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

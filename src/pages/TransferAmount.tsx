@@ -3,6 +3,7 @@ import { AiFillBackward } from 'react-icons/ai';
 import { FaSpinner } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { url } from '../baseUrl';
 
 interface TransferDetails {
   transferedAmount: string; // Changed to string to allow empty input
@@ -41,7 +42,7 @@ const TransferAccount: React.FC = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/user/transferAmount', {
+      const res = await fetch(`${url}/api/user/transferAmount`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +54,6 @@ const TransferAccount: React.FC = () => {
       const result = await res.json();
       if (res.ok) {
         toast.success('Transfer successful: ' + result.message);
-        // Optionally reset the form after successful transfer
         setTransferDetails({ transferedAmount: '', accountToTransfer: '', securityPin: '' });
       } else {
         toast.error(result.message);

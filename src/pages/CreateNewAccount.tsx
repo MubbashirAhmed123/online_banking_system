@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { User } from '../types/userType';
 import { sendData } from '../utils/api';
+import { url } from '../baseUrl';
 
 function CreateUser() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<User>();
 
   const onSubmit = async (data: User) => {
-    await sendData('http://localhost:5000/api/user/createAcc', data, reset); 
+    await sendData(`${url}/api/user/createAcc`, data, reset); 
   };
 
   return (

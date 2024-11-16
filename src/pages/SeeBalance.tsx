@@ -3,6 +3,7 @@ import { AiFillBackward } from 'react-icons/ai';
 import { FaSpinner } from 'react-icons/fa';
 import {  useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { url } from '../baseUrl';
 
 const SeeBalance = () => {
   const [securityPin, setSecurityPin] = useState('');
@@ -15,7 +16,7 @@ const SeeBalance = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/user/getBalance', {
+      const res = await fetch(`${url}/api/user/getBalance`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
