@@ -16,18 +16,8 @@ const sendEmail = async (data: any): Promise<boolean> => {
     securityPin: data.securityPinToSend,
   };
 
-
-  const emailServiceId = process.env.REACT_APP_EMAIL_SERVICE_ID;
-  const publicKey = process.env.REACT_APP_PUBLIC_ID;
-
-
-  if (!emailServiceId || !publicKey) {
-    console.error("Missing EmailJS configuration in environment variables.");
-    return false;
-  }
-
   try {
-    await emailjs.send(emailServiceId, 'template_y0d1ps2', templateParams, publicKey);
+    await emailjs.send('service_ehqqwpb', 'template_y0d1ps2', templateParams, '3IiONviq4s1gKs3Nt');
     return true;
   } catch (error) {
     console.error("Error sending email:", error);
