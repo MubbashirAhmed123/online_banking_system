@@ -1,54 +1,62 @@
 # Banking System Project
 
-A feature-rich banking system built with modern web technologies. This application allows users to create accounts, check balances, transfer funds, deposit amounts, change PINs, and more. The project is developed using React, Tailwind CSS, Node.js, Express.js, JWT, and Nodemailer.
-
----
+A full-stack Banking System that provides essential banking services, including account creation, balance inquiry, fund transfer, deposit, and PIN management. This project is built with modern web technologies like **React**, **TypeScript**, **Tailwind CSS**, **Node.js**, **Express.js**, and more.
 
 ## Features
 
-### User Features
 1. **Create Account**  
-   - Users can create a new account with their personal details and set up a secure PIN.
+   Users can sign up for a new bank account with secure validation.
 
-2. **View Balance**  
-   - View the current account balance securely.
+2. **See Balance**  
+   Customers can view their current account balance securely.
 
 3. **Transfer Amount**  
-   - Transfer funds to other accounts within the system using account numbers.
+   Transfer funds to other accounts with real-time transaction updates.
 
 4. **Deposit Amount**  
-   - Deposit money into an account directly.
+   Deposit money directly into the account.
 
 5. **Change PIN**  
-   - Update the account PIN for enhanced security.
-   
+   Update account PIN with secure validation and encryption.
 
-## Tech Stack
+6. **Email Notifications**  
+   Send account information securely to users via email using **EmailJS**.
 
-### Frontend
-- **React.js**: For building a responsive and dynamic user interface.
-- **Tailwind CSS**: For designing a clean and user-friendly UI.
+## Technologies Used
 
-### Backend
-- **Node.js**: For handling server-side operations.
-- **Express.js**: A lightweight framework for building RESTful APIs.
+- **Frontend**: 
+  - React
+  - TypeScript
+  - Tailwind CSS
+  
+- **Backend**: 
+  - Node.js
+  - Express.js
 
-### Security
-- **JWT (JSON Web Token)**: For secure user authentication and session management.
+- **Authentication & Security**:
+  - JWT (JSON Web Token) for secure authentication.
+  - bcrypt for PIN encryption.
 
-### Communication
-- **Nodemailer**: For sending account-related notifications such as account creation confirmations, transaction alerts, and PIN change notifications.
+- **Email Notifications**:
+  - EmailJS for sending account-related emails directly from the frontend.
 
----
+## Prerequisites
 
-## Installation and Setup
+- **Node.js**: Ensure you have Node.js installed on your system.
+- **Database**: A database (e.g., MongoDB or PostgreSQL) configured for account and transaction data.
+- **Environment Variables**: Set up the following variables in a `.env` file:
+  - `JWT_SECRET` for token signing.
+  - `DB_URI` for database connection.
 
-### Prerequisites
-- **Node.js**: Ensure Node.js is installed on your system.
-- **MongoDB**: Set up MongoDB for the database (or any other database of your choice).
+### EmailJS Setup
+- Create an EmailJS account at [EmailJS](https://www.emailjs.com/).
+- Set up an email service, create an email template, and get the service ID, template ID, and user ID.
+- Add the EmailJS configuration in the frontend.
 
-### Steps
-1. **Clone the Repository**
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/banking-system.git
-   cd banking-system

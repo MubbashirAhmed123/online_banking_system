@@ -1,18 +1,51 @@
 // src/api/userApi.ts
 import { NavigateFunction } from 'react-router-dom';
-import { User, LoginFormData, ActivateInternetBanking } from '../types/userType';
+import { User } from '../types/userType';
 import { toast } from 'react-toastify';
+import emailjs from "@emailjs/browser";
 
-type Data = User | LoginFormData | ActivateInternetBanking;
+
+
+type Data = User ;
+
+const sendEmail = async (data: any): Promise<boolean> => {
+  const templateParams = {
+    userName: data.userName,
+    email: data.email,
+    accountNumber: data.accountNumber,
+    securityPin: data.securityPinToSend,
+  };
+
+  console.log('Email data:', templateParams);
+
+  const emailServiceId = process.env.REACT_APP_EMAIL_SERVICE_ID;
+  const templateId = process.env.REACT_APP_EMAIL_TEMPLATE_ID; // Fixed typo in REACT_APP
+  const publicKey = process.env.REACT_APP_PUBLIC_ID;
+
+  console.log(emailServiceId, templateId, publicKey);
+
+  if (!emailServiceId || !publicKey) {
+    console.error("Missing EmailJS configuration in environment variables.");
+    return false;
+  }
+
+  try {
+    const response = await emailjs.send(emailServiceId, 'template_y0d1ps2', templateParams, publicKey);
+    console.log("Email sent successfully:", response.status, response.text);
+    return true;
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return false;
+  }
+};
 
 export const sendData = async (
   url: string,
   data: Data,
   reset: () => void,
-  navigate?: NavigateFunction // Make navigate optional
+  navigate?: NavigateFunction
 ) => {
   try {
-
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -28,18 +61,29 @@ export const sendData = async (
     }
 
     const result = await response.json();
-    
+
     if (result.token) {
-      localStorage.setItem('token', result.token); // Store just the token, without 'Bearer'
-      // Check if navigate is provided before calling it
+      localStorage.setItem('token', result.token);
+
       if (navigate) {
-        navigate('/internet-banking'); // Redirect to internet banking dashboard
+        navigate('/internet-banking'); 
       }
     }
-    
-    toast.success(result.message || 'User account created successfully!');
-    reset(); 
+
+    const isEmailSent = await sendEmail(result.data);
+
+    if (isEmailSent) {
+      toast.success(
+        `${result.message} Information has been sent to your email.`
+      );
+    } else {
+      toast.warning(
+        `${result.message} However, we couldn't send the email.`
+      );
+    }
+
+    reset();
   } catch (error) {
-    toast.error('Some error occurred..');
+    toast.error('Some error occurred.');
   }
 };

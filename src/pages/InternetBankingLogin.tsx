@@ -33,7 +33,7 @@ const InternetBankingLogin = () => {
       }
 
       toast.success(result.message || 'Internet Banking registration successful.');
-      reset(); // Reset form on success
+      reset(); 
 
     } catch (error) {
       toast.error('An unexpected error occurred.');

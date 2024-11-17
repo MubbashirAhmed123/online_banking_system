@@ -53,7 +53,7 @@ const DepositeAmount: React.FC = () => {
 
       const result = await res.json();
       if (res.ok) {
-        toast.success('Transfer successful: ' + result.message);
+        toast.success('Deposited successful: ' + result.message);
         setTransferDetails({ bankAccountNumber: '', amountToAdd: '', securityPin: '' });
       } else {
         toast.error(result.message);

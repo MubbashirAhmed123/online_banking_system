@@ -6,14 +6,14 @@ import { toast } from 'react-toastify';
 import { url } from '../baseUrl';
 
 interface TransferDetails {
-  transferedAmount: string; // Changed to string to allow empty input
+  transferedAmount: string; 
   accountToTransfer: string;
   securityPin: string;
 }
 
 const TransferAccount: React.FC = () => {
   const [transferDetails, setTransferDetails] = useState<TransferDetails>({
-    transferedAmount: '', // Initialize as an empty string
+    transferedAmount: '', 
     accountToTransfer: '',
     securityPin: '',
   });

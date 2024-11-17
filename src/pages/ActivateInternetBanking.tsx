@@ -49,7 +49,7 @@ const ActivateInternetBanking = () => {
 
             const result = await res.json();
             if (res.ok) {
-                toast.success('Transfer successful: ' + result.message);
+                toast.success(result.message);
                 setTransferDetails({ bankAccountNumber: '', securityPin: '' });
             } else {
                 toast.error(result.message);

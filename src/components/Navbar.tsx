@@ -31,8 +31,10 @@ const Navbar = () => {
             >
               <Link to={item.url}>{item.text}</Link>
             </li>
+            
           ))}
         </ul>
+
 
         {/* Hamburger Icon for Mobile */}
         <div onClick={handleNav} className="block md:hidden cursor-pointer">
@@ -40,7 +42,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       <ul
         className={`fixed md:hidden top-0 left-0 w-2/3 h-full bg-blue-400 border-r border-gray-700 transform ${
           nav ? 'translate-x-0' : '-translate-x-full'
